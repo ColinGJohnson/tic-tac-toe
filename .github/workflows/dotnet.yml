@@ -12,14 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
+      working-directory: ./TicTacToe
       run: dotnet restore
     - name: Build
+      working-directory: ./TicTacToe
       run: dotnet build --no-restore
     - name: Test
+      working-directory: ./TicTacToe
       run: dotnet test --no-build --verbosity normal
